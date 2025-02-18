@@ -1,20 +1,19 @@
-# ME700 Assignment 1: Warm-up
+# ME700 Assignment 1
 
-This repository presents a bisection method solver developed for the first assignment in the ME700 course. The first three numerical examples demonstrate solving algebraic equations. The fourth example applies the method to find the position of a balance force in a cantilever beam, while the fifth example computes a center of mass for a given number of masses on a 1D axis.
+## Table of Contents
 
-# The Bisection Method
+- [Introduction](#introduction)
+- [Conda Environment, Installation, and Testing](#conda-environment-installation-and-testing)
+- [Tutorials](#tutorials)
+- [More Information](#more-information)
 
-The bisection method is a classical numerical technique for finding real roots of algebraic equations. It is based on the intermediate value theorem from calculus, which states that if a continuous function takes on opposite signs at two points, there must be at least one root between them. The method's name reflects how it works: in each iteration, the interval is bisected, and the half containing a sign change is retained for the next iteration, while the other half is discarded.
+## Introduction
+This repository presents the work developed to fulfill the requirements of Assignment 1 for the course ME700. It involves codes to solve algebraic and mechanical problems using the bisection and Newton-Raphson methods. Also, it contains a code to solve geometrically linear 1D elastoplasticity problems with isotropic and kinematic hardening using the predictor-corrector algorithm.
 
-The user must define the function, $f(x)$, and specify the lower and upper bounds of the interval, $a$ and $b$, respectively. To ensure the presence of a root, the function values at these bounds must have opposite signs. If both values share the same sign, the existence of a root within the interval is not guaranteed. In such cases, an error message is displayed, prompting the user to select a different set of boundaries.
 
-The bisection method is an iterative process, and the user determines the termination criteria based on the required accuracy, which depends on the specific application. This solver employs two termination criteria, ending the iterations when either is satisfied. The first criterion is when $|c-a|< \epsilon_1$, meaning the half-interval size becomes smaller than a predefined threshold. The second criterion is when $|f(c)|< \epsilon_2$, indicating that the function value is sufficiently close to zero. The user must specify both $\epsilon_1$ and $\epsilon_2$, with tighter tolerances providing greater accuracy at the cost of additional iterations.
+## Conda environment, install, and testing
 
-The concept of the bisection method is straightforward. However, the method has significant limitations. First, the user must identify an interval that contains a root.  Second, the method can only find a single root at a time; for equations with multiple roots, the user must test different intervals to locate each one. Third, the method has a relatively slow convergence rate, often requiring more iterations compared to more advanced numerical techniques.
-
-# Conda environment, install, and testing
-
-This procedure is very similar to what we did in the last class. First, you need to download the repository and unzip it. Then, to install the package, use:
+This procedure is very similar to what we did in class. First, you need to download the repository and unzip it. Then, to install the package, use:
 
 ```bash
 conda create --name bisection-method-env python=3.12
@@ -83,8 +82,33 @@ Once you are there, you can use:
 pip install jupyter
 ```
 
+Depending on which tutorial you want to use, you should run one of the following lines:
+
 ```bash
-jupyter notebook tutorial.ipynb
+jupyter notebook bisection.ipynb
+```
+
+```bash
+jupyter notebook newton.ipynb
+```
+
+```bash
+jupyter notebook elastoplasticity.ipynb
 ```
 
 A Jupyter notebook will pop up, containing five numerical examples.
+
+## Tutorial
+
+This repository contains three tutorials. Each contains five examples addressing one of the topics mentioned above.
+
+- 
+
+## More information
+
+More information can be found here:
+
+- [Bisection Method](https://en.wikipedia.org/wiki/Bisection_method)
+- [Newton's Method](https://en.wikipedia.org/wiki/Newton%27s_method)
+- [Plasticity](https://en.wikipedia.org/wiki/Plasticity_(physics))
+
