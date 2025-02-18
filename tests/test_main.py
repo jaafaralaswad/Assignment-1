@@ -41,6 +41,7 @@ def test_bisection_with_negative_root():
     assert result['converged'] is True
 
 
+
 # --- cantilever Tests ---
 # Test cantilever function
 @pytest.fixture
@@ -93,8 +94,61 @@ def test_terminate_max_iter():
 
 
 
-
 # --- mass_canter Tests ---
+
+# Mock input function to test mass_center
+@pytest.fixture
+def mock_input(monkeypatch):
+    inputs = iter(["5", "1.0", "3.0", "2.0", "5.0", "1.5", "7.0", "2.5", "9.0", "3.5"])  # Masses and positions
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+def test_mass_center(mock_input):
+    result = mass_center.mass_center(5, 1e-6, 1e-6, 100)
+    assert "root" in result
+    assert "iterations" in result
+    assert "function_value" in result
+    assert "interval" in result
+    assert "converged" in result
+    assert result["converged"] is True
+
+def test_evaluate_middle_point():
+    assert mass_center.evaluate_middle_point(0, 10) == 5.0
+
+def test_validate_b_greater_a():
+    with pytest.raises(ValueError):
+        mass_center.validate_b_greater_a(10, 10)
+    with pytest.raises(ValueError):
+        mass_center.validate_b_greater_a(10, 5)
+    assert mass_center.validate_b_greater_a(5, 10) is True
+
+def test_validate_interval():
+    with pytest.raises(ValueError):
+        mass_center.validate_interval(0, 10, 1, 1)
+    assert mass_center.validate_interval(0, 10, -1, 1) is None
+
+def test_update_interval_a_b():
+    a, b, fnc_a, fnc_b = mass_center.update_interval_a_b(0, 10, 5, -1, 1, 0)
+    assert a == b == 5
+
+def test_find_root():
+    assert mass_center.find_root(0, 10, 0, 1e-6, 1e-6) is True
+    assert mass_center.find_root(0, 10, 1, 1e-6, 1e-6) is False
+
+def test_terminate_max_iter():
+    with pytest.raises(ValueError):
+        mass_center.terminate_max_iter(101, 100)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
