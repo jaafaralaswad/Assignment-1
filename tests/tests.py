@@ -16,7 +16,7 @@ def test_midpoint():
 
 def test_bisection_finds_root():
     # Test for a simple quadratic function x^2 - 4 = 0 (roots at x = -2, 2)
-    result = bisection(lambda x: x**2 - 4, 0, 3, 1e-6, 1e-6, 100)
+    result = bisection.bisection(lambda x: x**2 - 4, 0, 3, 1e-6, 1e-6, 100)
     assert abs(result['root'] - 2) < 1e-6
     assert result['converged'] is True
     assert result['iterations'] <= 100
@@ -24,7 +24,7 @@ def test_bisection_finds_root():
 def test_bisection_no_root_in_interval():
     # Test for no root in interval [3, 5] for x^2 - 4 = 0
     with pytest.raises(ValueError, match=r"A root in interval.*is not guaranteed."):
-        bisection(lambda x: x**2 - 4, 3, 5, 1e-6, 1e-6, 100)
+        bisection.bisection(lambda x: x**2 - 4, 3, 5, 1e-6, 1e-6, 100)
 
 def test_validate_b_greater_a():
     # Test that validate_b_greater_a raises an error when a >= b
@@ -35,7 +35,7 @@ def test_validate_b_greater_a():
 
 def test_bisection_with_negative_root():
     # Test for finding negative root in [-3, 0]
-    result = bisection(lambda x: x**2 - 4, -3, 0, 1e-6, 1e-6, 100)
+    result = bisection.bisection(lambda x: x**2 - 4, -3, 0, 1e-6, 1e-6, 100)
     assert abs(result['root'] + 2) < 1e-6
     assert result['converged'] is True
 
