@@ -13,6 +13,7 @@
 - [Conda Environment, Installation, and Testing](#conda-environment-installation-and-testing)
 - [The Bisection Method](#the-bisection-method)
 - [Newton's Method](#newtons-method)
+- [Elastoplasticity](#elastoplasticity)
 - [Tutorials](#tutorials)
 - [More Information](#more-information)
 
@@ -135,6 +136,11 @@ For systems of equations  $\mathbf{F}(\mathbf{x}) = 0$, the method extends to mu
 $$ \mathbf{x}_{n+1} = \mathbf{x}_n - \mathbf{J}^{-1} \mathbf{F}(\mathbf{x}_n)$$
 
 Here, $\mathbf{J}$ is the matrix of partial derivatives $\frac{\partial F_i}{\partial x_j}$.
+
+
+## Elastoplasticity
+
+To be written.
 
 
 ## Tutorial
