@@ -4,7 +4,7 @@ import pytest
 # Import functions from both methods
 from bisectionmethod import bisection, cantilever, mass_center
 from newtonmethod import newton, newton_raphson
-from elastoplasticity import elastoplasticity
+from elastoplasticity.elastoplasticity import LinearInterpolator, ElastoplasticMaterial, ElastoplasticSolver
 
 # --- Bisection Method Tests ---
 def test_midpoint():
@@ -39,6 +39,18 @@ def test_bisection_with_negative_root():
     result = bisection.bisection(lambda x: x**2 - 4, -3, 0, 1e-6, 1e-6, 100)
     assert abs(result['root'] + 2) < 1e-6
     assert result['converged'] is True
+
+
+
+# --- cantilever Tests ---
+
+
+
+
+
+# --- mass_canter Tests ---
+
+
 
 
 
@@ -210,3 +222,54 @@ def test_newton_raphson_max_iterations():
 
     with pytest.raises(RuntimeError, match="Maximum iterations reached without convergence."):
         newton_raphson.newton_raphson(f2, df2x, df2y, g2, dg2x, dg2y, x0, y0, epsilon, max_iter)
+
+
+
+
+
+# --- Elastoplasticity Tests ---
+
+# Test LinearInterpolator
+@pytest.fixture
+def linear_interpolator():
+    t_data = np.array([0, 1, 2])
+    eps_data = np.array([0, 0.1, 0.2])
+    N = 10
+    return LinearInterpolator(t_data, eps_data, N)
+
+def test_interpolator(linear_interpolator):
+    t, eps = linear_interpolator.interpolate()
+    assert len(t) == len(eps)
+    assert np.allclose(eps, np.interp(t, linear_interpolator.t_data, linear_interpolator.eps_data))
+
+# Test ElastoplasticMaterial
+@pytest.fixture
+def elastoplastic_material():
+    return ElastoplasticMaterial(E_1=200e9, E_2=10e9, sigma_y0=250e6, H=5e9)
+
+def test_compute_stress(elastoplastic_material):
+    assert elastoplastic_material.compute_stress(0.002, 0.001) == 200e9 * (0.002 - 0.001)
+
+def test_compute_back_stress(elastoplastic_material):
+    assert elastoplastic_material.compute_back_stress(0.001) == 10e9 * 0.001
+
+def test_yield_function(elastoplastic_material):
+    sigma, X, xi = 300e6, 50e6, 0.001
+    assert elastoplastic_material.yield_function(sigma, X, xi) == abs(300e6 - 50e6) - (250e6 + 5e9 * 0.001)
+
+def test_plastic_correction(elastoplastic_material):
+    deps, eps_p, xi = 0.001, 0.0, 0.0
+    delta_eps_p, delta_xi = elastoplastic_material.plastic_correction(deps, eps_p, xi)
+    expected_factor = 200e9 / (200e9 + 10e9 + 5e9)
+    assert delta_eps_p == expected_factor * deps
+    assert delta_xi == expected_factor * abs(deps)
+
+# Test ElastoplasticSolver
+@pytest.fixture
+def elastoplastic_solver(linear_interpolator, elastoplastic_material):
+    return ElastoplasticSolver(elastoplastic_material, linear_interpolator)
+
+def test_solver(elastoplastic_solver):
+    t, eps, sigma = elastoplastic_solver.solve()
+    assert len(t) == len(eps) == len(sigma)
+    assert sigma[0] == 0  # Initial stress should be zero
