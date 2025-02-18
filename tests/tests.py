@@ -2,13 +2,7 @@ import numpy as np
 import pytest
 
 # Import functions from both methods
-from bisection import (
-    bisection,
-    evaluate_middle_point,
-    validate_b_greater_a,
-    validate_interval
-)
-
+from bisectionmethod import bisection
 from newtonmethod import newton, newton_raphson
 
 # --- Bisection Method Tests ---
@@ -16,7 +10,7 @@ def test_midpoint():
     # Test for evaluating middle point
     a = 10.0
     b = 20.0
-    found = evaluate_middle_point(a, b)
+    found = bisection.evaluate_middle_point(a, b)
     known = 15.0
     assert np.isclose(known, found)
 
@@ -35,9 +29,9 @@ def test_bisection_no_root_in_interval():
 def test_validate_b_greater_a():
     # Test that validate_b_greater_a raises an error when a >= b
     with pytest.raises(ValueError, match="Invalid input: 2.0 is equal to 2.0."):
-        validate_b_greater_a(2.0, 2.0)
+        bisection.validate_b_greater_a(2.0, 2.0)
     with pytest.raises(ValueError, match="Invalid input: 3.0 is greater than 2.0."):
-        validate_b_greater_a(3.0, 2.0)
+        bisection.validate_b_greater_a(3.0, 2.0)
 
 def test_bisection_with_negative_root():
     # Test for finding negative root in [-3, 0]
