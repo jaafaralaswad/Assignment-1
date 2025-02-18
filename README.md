@@ -40,7 +40,7 @@ pip install -e .
 You must do this in the correct directory; in order to make sure, replace the dot at the end by the directory of the folder "ME700-A1-main" that you unzipped earlier: For example, on my computer, the line would appear as follows:
 
 ```bash
-pip install -e /Users/jaafaralaswad/Downloads/ME700-A1-main
+pip install -e /Users/jaafaralaswad/Downloads/Assignment-1-main
 ```
 
 Now, you can test the code, make sure you are in the tests directory. You can know in which directory you are using:
@@ -58,7 +58,7 @@ cd
 On my computer, to be in the tests folder, I would use:
 
 ```bash
-cd /Users/jaafaralaswad/Downloads/ME700-A1-main/tests
+cd /Users/jaafaralaswad/Downloads/Assignment-1-main/tests
 ```
 
 
@@ -73,7 +73,7 @@ Code coverage should be 100%.
 To run the tutorial, make sure you are in the tutorials directory. You can navigate their as you navigated to the tests folder. On my computer, I would use:
 
 ```bash
-cd /Users/jaafaralaswad/Downloads/ME700-A1-main/tutorials
+cd /Users/jaafaralaswad/Downloads/Assignment-1-main/tutorials
 ```
 
 Once you are there, you can use:
