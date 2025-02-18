@@ -107,7 +107,7 @@ A Jupyter notebook will pop up, containing five numerical examples.
 
 ## Tutorial
 
-This repository contains three tutorials. Each contains five examples addressing one of the topics mentioned above.
+This repository contains three tutorials. Each contains five numerical examples addressing one of the topics mentioned above.
 
 - 
 
