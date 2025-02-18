@@ -41,7 +41,6 @@ def test_bisection_with_negative_root():
     assert result['converged'] is True
 
 
-
 # --- cantilever Tests ---
 # Test cantilever function
 @pytest.fixture
@@ -56,7 +55,7 @@ def cantilever_params():
     }
 
 def test_cantilever(cantilever_params):
-    result = cantilever(**cantilever_params)
+    result = cantilever.cantilever(**cantilever_params)
     assert "root" in result
     assert "iterations" in result
     assert "function_value" in result
