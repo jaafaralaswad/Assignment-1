@@ -12,6 +12,7 @@
 - [Introduction](#introduction)
 - [Conda Environment, Installation, and Testing](#conda-environment-installation-and-testing)
 - [The Bisection Method](#the-bisection-method)
+- [Newton's Method](#newtons-method)
 - [Tutorials](#tutorials)
 - [More Information](#more-information)
 
@@ -117,6 +118,24 @@ The user must define the function, $f(x)$, and specify the lower and upper bound
 The bisection method is an iterative process, and the user determines the termination criteria based on the required accuracy, which depends on the specific application. This solver employs two termination criteria, ending the iterations when either is satisfied. The first criterion is when $|c-a|< \epsilon_1$, meaning the half-interval size becomes smaller than a predefined threshold. The second criterion is when $|f(c)|< \epsilon_2$, indicating that the function value is sufficiently close to zero. The user must specify both $\epsilon_1$ and $\epsilon_2$, with tighter tolerances providing greater accuracy at the cost of additional iterations.
 
 The concept of the bisection method is straightforward. However, the method has significant limitations. First, the user must identify an interval that contains a root.  Second, the method can only find a single root at a time; for equations with multiple roots, the user must test different intervals to locate each one. Third, the method has a relatively slow convergence rate, often requiring more iterations compared to more advanced numerical techniques.
+
+
+## Newton's Method
+
+Newton's method is an efficient numerical technique for finding real roots of equations. It iteratively refines an initial guess, $x_0$, using the formula:  
+
+$$ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} $$
+
+The method stops when either $|x_{n+1} - x_n| < \epsilon_1$ or  $|f(x_n)| < \epsilon_2$, ensuring sufficient accuracy.  
+
+Unlike the bisection method, Newton-Raphson converges quadratically when $x_0$ is close to the root. However, it requires $f'(x)$, may fail if $f'(x) = 0$, and can diverge from poor initial guesses.
+
+For systems of equations  $\mathbf{F}(\mathbf{x}) = 0$, the method extends to multiple dimensions using the Jacobian matrix $\mathbf{J}$:  
+
+$$ \mathbf{x}_{n+1} = \mathbf{x}_n - \mathbf{J}^{-1} \mathbf{F}(\mathbf{x}_n)$$
+
+Here, $\mathbf{J}$ is the matrix of partial derivatives $\frac{\partial F_i}{\partial x_j}$.
+
 
 ## Tutorial
 
