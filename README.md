@@ -38,13 +38,13 @@ Check that you have Python 3.12 in the environment. To do so, use:
 python --version
 ```
 
-Create an editable install of the bisection method code. Use the following line making sure you are in the correct directory:
+Create an editable install of the assignemnt codes. Use the following line making sure you are in the correct directory:
 
 ```bash
 pip install -e .
 ```
 
-You must do this in the correct directory; in order to make sure, replace the dot at the end by the directory of the folder "ME700-A1-main" that you unzipped earlier: For example, on my computer, the line would appear as follows:
+You must do this in the correct directory; in order to make sure, replace the dot at the end by the directory of the folder "Assignment-1-main" that you unzipped earlier: For example, on my computer, the line would appear as follows:
 
 ```bash
 pip install -e /Users/jaafaralaswad/Downloads/Assignment-1-main
@@ -108,8 +108,6 @@ A Jupyter notebook will pop up, containing five numerical examples.
 ## Tutorial
 
 This repository contains three tutorials. Each contains five numerical examples addressing one of the topics mentioned above.
-
-- 
 
 ## More information
 
