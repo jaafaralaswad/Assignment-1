@@ -43,6 +43,53 @@ def test_bisection_with_negative_root():
 
 
 # --- cantilever Tests ---
+# Test cantilever function
+@pytest.fixture
+def cantilever_params():
+    return {
+        "L": 10.0,
+        "w": 5.0,
+        "P": 20.0,
+        "tol_input": 1e-6,
+        "tol_output": 1e-6,
+        "max_iterations": 100
+    }
+
+def test_cantilever(cantilever_params):
+    result = cantilever(**cantilever_params)
+    assert "root" in result
+    assert "iterations" in result
+    assert "function_value" in result
+    assert "interval" in result
+    assert "converged" in result
+    assert result["converged"] is True
+
+def test_evaluate_middle_point():
+    assert cantilever.evaluate_middle_point(0, 10) == 5.0
+
+def test_validate_b_greater_a():
+    with pytest.raises(ValueError):
+        cantilever.validate_b_greater_a(10, 10)
+    with pytest.raises(ValueError):
+        cantilever.validate_b_greater_a(10, 5)
+    assert cantilever.validate_b_greater_a(5, 10) is True
+
+def test_validate_interval():
+    with pytest.raises(ValueError):
+        cantilever.validate_interval(0, 10, 1, 1)
+    assert cantilever.validate_interval(0, 10, -1, 1) is None
+
+def test_update_interval_a_b():
+    a, b, fnc_a, fnc_b = cantilever.update_interval_a_b(0, 10, 5, -1, 1, 0)
+    assert a == b == 5
+
+def test_find_root():
+    assert cantilever.find_root(0, 10, 0, 1e-6, 1e-6) is True
+    assert cantilever.find_root(0, 10, 1, 1e-6, 1e-6) is False
+
+def test_terminate_max_iter():
+    with pytest.raises(ValueError):
+        cantilever.terminate_max_iter(101, 100)
 
 
 
