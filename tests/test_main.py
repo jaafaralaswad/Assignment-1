@@ -48,7 +48,7 @@ def cantilever_params():
     return {
         "L": 10.0,
         "w": 5.0,
-        "P": 20.0,
+        "P": 50.0,  # Increased P to ensure a valid root
         "tol_input": 1e-6,
         "tol_output": 1e-6,
         "max_iterations": 100
