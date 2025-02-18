@@ -4,6 +4,7 @@ import pytest
 # Import functions from both methods
 from bisectionmethod import bisection
 from newtonmethod import newton, newton_raphson
+from elastoplasticity import elastoplasticity
 
 # --- Bisection Method Tests ---
 def test_midpoint():
