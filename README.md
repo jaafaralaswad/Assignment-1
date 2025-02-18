@@ -16,13 +16,13 @@ This repository presents the work developed to fulfill the requirements of Assig
 This procedure is very similar to what we did in class. First, you need to download the repository and unzip it. Then, to install the package, use:
 
 ```bash
-conda create --name bisection-method-env python=3.12
+conda create --name assignment-1-env python=3.12
 ```
 
 After creating the environment (it might have already been created by you earlier), make sure to activate it, use:
 
 ```bash
-conda activate bisection-method-env
+conda activate assignment-1-env
 ```
 
 Check that you have Python 3.12 in the environment. To do so, use:
