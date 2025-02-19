@@ -75,7 +75,7 @@ cd /Users/jaafaralaswad/Downloads/Assignment-1-main/tests
 Once you are in the tests directory, use the following to run the tests:
 
 ```bash
-pytest -s tests.py
+pytest -s test_main.py
 ```
 
 Code coverage should be 100%.
@@ -143,7 +143,7 @@ Here, $\mathbf{J}$ is the matrix of partial derivatives $\frac{\partial F_i}{\pa
 To be written.
 
 
-## Tutorial
+## Tutorials
 
 This repository contains three tutorials. Each contains five numerical examples addressing one of the topics mentioned above.
 
