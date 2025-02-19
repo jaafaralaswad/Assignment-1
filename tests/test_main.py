@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 
 # Import functions from both methods
-#from bisectionmethod import bisection, cantilever, mass_center
+#from bisectionmethod import bisection, cantilever, mass_center (# Not to be tested!)
 from newtonmethod import newton, newton_raphson
 from elastoplasticity.elastoplasticity import LinearInterpolator, ElastoplasticMaterial, ElastoplasticSolver
 
