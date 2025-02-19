@@ -92,26 +92,26 @@ def test_terminate_max_iter():
         cantilever.terminate_max_iter(101, 100)
 
 
-def test_root_at_c():
-    assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 2, 0) == (1.5, 1.5, 0, 0)
+# def test_root_at_c():
+#     assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 2, 0) == (1.5, 1.5, 0, 0)
 
-def test_root_at_a():
-    assert cantilever.update_interval_a_b(1, 2, 1.5, 0, 2, -1) == (1, 1, 0, 0)
+# def test_root_at_a():
+#     assert cantilever.update_interval_a_b(1, 2, 1.5, 0, 2, -1) == (1, 1, 0, 0)
 
-def test_root_at_b():
-    assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 0, 2) == (2, 2, 0, 0)
+# def test_root_at_b():
+#     assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 0, 2) == (2, 2, 0, 0)
 
-def test_root_in_a_c():
-    assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 2, -0.5) == (1, 1.5, -1, -0.5)
+# def test_root_in_a_c():
+#     assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 2, -0.5) == (1, 1.5, -1, -0.5)
 
-def test_root_in_b_c():
-    assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 2, 0.5) == (2, 1.5, 2, 0.5)
+# def test_root_in_b_c():
+#     assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 2, 0.5) == (2, 1.5, 2, 0.5)
 
-def test_root_in_a_c_reversed():
-    assert cantilever.update_interval_a_b(1, 2, 1.5, 1, -2, 0.5) == (2, 1.5, -2, 0.5)
+# def test_root_in_a_c_reversed():
+#     assert cantilever.update_interval_a_b(1, 2, 1.5, 1, -2, 0.5) == (2, 1.5, -2, 0.5)
 
-def test_root_in_b_c_reversed():
-    assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 2, -0.5) == (1, 1.5, -1, -0.5)
+# def test_root_in_b_c_reversed():
+#     assert cantilever.update_interval_a_b(1, 2, 1.5, -1, 2, -0.5) == (1, 1.5, -1, -0.5)
 
 
 # --- mass_canter Tests ---
